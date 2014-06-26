@@ -1,5 +1,5 @@
 --------------------------------------------------
---LennyGUI by Leonard Henry Phelan IV v. 1.0    --
+--LennyGUI by Leonard Henry Phelan IV v. 1.1    --
 --------------------------------------------------
 
 dofunction = 1
@@ -96,6 +96,18 @@ gui = {
 	  	if type(h) ~= "number" then error("Invalid argument 4 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted height value",2) end
 	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.rect, expected number, got ".. type(color) .. ", wanted color",2) end
 	  	gui.shape.altrect(x,y,x+w,y+h,color)
+	  end,
+	  line = function (x1,y1,x2,y2,color)
+	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.line, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
+	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.line, expected number, got ".. type(y1) .. ", wanted y1 value",2) end
+	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
+	  	if type(y2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
+	  	if type(color) ~= "number" then error("Invalid argument 4 of gui.shape.line, expected number, got ".. type(color) .. ", wanted color value",2) end
+	  	local m = (y2 - y1) / (x2 / x1)
+		for lx = x1, x2 do
+ 			local ly = (m * lx) + y1
+ 			gui.fill(lx, ly, color)
+		end
 	  end
  },
   fill = function (x,y,color, char)
@@ -114,7 +126,7 @@ gui = {
 --End Methods
 thisway = function ()
 --Code Here
-
+gui.shape.line(2,2,10,5,colors.white)
 --End Code
 end
 start = function ()
