@@ -9,7 +9,7 @@ Features:
 
 	1) Full error handling, clearly tells you what you did wrong
 	2) Buttons
-	3) Shapes (namely rectangles as it stands, but I'm working on it)
+	3) Shapes (rectangles & lines)
 	4) Ablilty to create clickable reagons of the screen that aren't drawn as buttons and similarly to create boxes with text that look like buttons, but don't trigger anything
 	5) Customizable text color & background color
 
@@ -24,4 +24,4 @@ Functions:
 	7) gui.shape.line(x1,y1,x2,y2,color) - Basic line algoritm
 	8) gui.fill(x, y, color [, char]) - Fills a single pixel with the specified color or charecter using the preset textcolor.
 
-	More to come...
+	More to come... (Progressbars!)
