@@ -6,6 +6,7 @@ API to make pretty GUIs in Computercraft for Minecraft
 NOTE: Does not currently support use of the os.loadAPI, instead, further towards the bottom of the file there are comments indicating where to place your main code and where to place your methods & definitions. Functions with a well true loop must be run in parallel with the click() function, also does not work while the read() function is running.
 
 Features:
+
 	1) Full error handling, clearly tells you what you did wrong
 	2) Buttons
 	3) Shapes (namely rectangles as it stands, but I'm working on it)
