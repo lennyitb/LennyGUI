@@ -21,6 +21,7 @@ Functions:
 	4) gui.button.gray(ID) - Either grays out or ungrays a button rendering it unclickable, if you are just disabling a clickable region, gui.button.gray will not attempt to draw a gray button, but instead just disable it.
 	5) gui.shape.rect(x, y, width, height, color) - Draws a rectangle, but relies on gui.shape.altrect.
 	6) gui.shape.altrect(x1, y1, x2, y2, color) - Also draws a rectangle, but using coord1 and coord2 rather than coord and width.
-	7) gui.fill(x, y, color [, char]) - Fills a single pixel with the specified color or charecter using the preset textcolor.
+	7) gui.shape.line(x1,y1,x2,y2,color) - Basic line algoritm
+	8) gui.fill(x, y, color [, char]) - Fills a single pixel with the specified color or charecter using the preset textcolor.
 
 	More to come...
