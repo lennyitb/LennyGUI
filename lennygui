@@ -15,22 +15,20 @@ width = 11
 btnindx = { }
 gui = {
   button = {
-	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,w)
+	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text)
 	  	if type(func) ~= "function" then error("Invalid argument 1 of gui.button.index, expected function, got ".. type(func) .. ", wanted function to run",2) end
 	  	if type(x1) ~= "number" then error("Invalid argument 2 of gui.button.index, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
 	  	if type(y1) ~= "number" then error("Invalid argument 3 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
 	  	if type(x2) ~= "number" then error("Invalid argument 4 of gui.button.index, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
 	  	if type(y2) ~= "number" then error("Invalid argument 5 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
 	  	if type(color) ~= "boolean" then error("Invalid argument 6 of gui.button.index, expected number, got ".. type(color) .. ", wanted weather or not to draw button",2) end
-	  	if type(tcolor) ~= "number" then error("Invalid argument 7 of gui.button.index, expected number, got ".. type(tcolor) .. ",wanted text color",2) end
-	  	if type(bcolor) ~= "number" then error("Invalid argument 8 of gui.button.index, expected number, got ".. type(bcolor) .. ",wanted background color",2) end
-	  	if type(text) ~= "string" then error("Invalid argument 9 of gui.button.index, expected string, got ".. type(text) .. ", wanted button caption",2) end
-	  	if type(w) ~= "number" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width",2) end
-	  	if color == true then
-	  		table.insert(btnindx,{func,x1,y1,x2,y2,true,color,tcolor,bcolor,text,w})
-	  	else
-	  		table.insert(btnindx,{func,x1,y1,x2,y2,true,color,"","","",w})
-	  	end
+	  	if type(tcolor) ~= "number" or type(tcolor) ~=  nil then error("Invalid argument 7 of gui.button.index, expected number, got ".. type(tcolor) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" or type(bcolor) ~= nil then error("Invalid argument 8 of gui.button.index, expected number, got ".. type(bcolor) .. ",wanted background color",2) end
+	  	if type(text) ~= "string" or type(text) ~= nil then error("Invalid argument 9 of gui.button.index, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	--if type(w) ~= "number" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width",2) end
+	  	w = x2 - x1
+	  	if tcolor == nil or bcolor == nil or text == nil then tcolor = " "; bcolor = " "; text = " " end
+	 	table.insert(btnindx,{func,x1,y1,x2,y2,true,color,tcolor,bcolor,text,w})
 	  	return #btnindx
 	  end,
 	  draw = function (text, x,y,w,h, tcolor, bcolor)
@@ -100,13 +98,15 @@ gui = {
 	  	gui.shape.altrect(x,y,x+w,y+h,color)
 	  end
  },
-  fill = function (x,y,color)
+  fill = function (x,y,color, char)
 	if type(x) ~= "number" then error("Invalid argument 1 of gui.fill, expected number, got ".. type(x) .. ", wanted x value",2) end
  	if type(y) ~= "number" then error("Invalid argument 2 of gui.fill, expected number, got ".. type(y) .. ", wanted y value",2) end
  	if type(color) ~= "number" then error("Invalid argument 3 of gui.fill, expected number, got ".. type(color) .. ", wanted color",2) end
+ 	if type(char) ~= "string" or type(char) ~= nil then error("Invalid argument 2 of gui.fill, expected number, got ".. type(y) .. ", wanted y value",2) end
+ 	if string.len(char) ~= 1 then error("Invalid argument 3 of gui.fill, expected 1 charecter, got".. string.len(char) .. ", wanted charecter or nil",2) end
 	term.setCursorPos(x,y)
 	term.setBackgroundColor(color)
-	term.write(" ")
+	if type(char) == nil then term.write(" ") else term.write(char)
   end
 }
 --Methods Here
