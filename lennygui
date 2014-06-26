@@ -1,0 +1,134 @@
+--------------------------------------------------
+--LennyGUI by Leonard Henry Phelan IV v. 1.0    --
+--------------------------------------------------
+
+dofunction = 1
+xmin = 2
+xmax = 4
+ymin = 3
+ymax = 5
+enable = 6
+textcolor = 8
+backcolor = 9
+text = 10
+width = 11
+btnindx = { }
+gui = {
+  button = {
+	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,w)
+	  	if type(func) ~= "function" then error("Invalid argument 1 of gui.button.index, expected function, got ".. type(func) .. ", wanted function to run",2) end
+	  	if type(x1) ~= "number" then error("Invalid argument 2 of gui.button.index, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
+	  	if type(y1) ~= "number" then error("Invalid argument 3 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
+	  	if type(x2) ~= "number" then error("Invalid argument 4 of gui.button.index, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
+	  	if type(y2) ~= "number" then error("Invalid argument 5 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
+	  	if type(color) ~= "boolean" then error("Invalid argument 6 of gui.button.index, expected number, got ".. type(color) .. ", wanted weather or not to draw button",2) end
+	  	if type(tcolor) ~= "number" then error("Invalid argument 7 of gui.button.index, expected number, got ".. type(tcolor) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" then error("Invalid argument 8 of gui.button.index, expected number, got ".. type(bcolor) .. ",wanted background color",2) end
+	  	if type(text) ~= "string" then error("Invalid argument 9 of gui.button.index, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width",2) end
+	  	if color == true then
+	  		table.insert(btnindx,{func,x1,y1,x2,y2,true,color,tcolor,bcolor,text,w})
+	  	else
+	  		table.insert(btnindx,{func,x1,y1,x2,y2,true,color,"","","",w})
+	  	end
+	  	return #btnindx
+	  end,
+	  draw = function (text, x,y,w,h, tcolor, bcolor)
+	    if type(text) ~= "string" then error("Invalid argument 1 of gui.button.draw, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	if type(x) ~= "number" then error("Invalid argument 2 of gui.button.draw, expected number, got ".. type(x) .. ", wanted x value",2) end
+	  	if type(y) ~= "number" then error("Invalid argument 3 of gui.button.draw, expected number, got ".. type(y) .. ", wanted y value",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 4 of gui.button.draw, expected number, got ".. type(w) .. ", wanted button horizantal spacing",2) end
+	  	if type(h) ~= "number" then error("Invalid argument 5 of gui.button.draw, expected number, got ".. type(h) .. ", wanted button height",2) end
+	  	if type(tcolor) ~= "number" then error("Invalid argument 6 of gui.button.draw, expected number, got ".. type(y) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" then error("Invalid argument 7 of gui.button.draw, expected number, got ".. type(y) .. ",wanted background color",2) end
+	  	l = string.len(text)
+	  	gui.shape.rect(x,y,(w * 2) + l,h,bcolor)
+	  	term.setCursorPos(w+x,(h/2)+y)
+	  	term.setTextColor(tcolor)
+	  	term.write(text)
+	  end,
+	  add = function (text, func, x,y,w,h, tcolor, bcolor)
+	  	if type(text) ~= "string" then error("Invalid argument 1 of gui.button.add, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	if type(func) ~= "function" then error("Invalid argument 2 of gui.button.add, expected function, got ".. type(func) .. ", wanted function to run",2) end
+	  	if type(x) ~= "number" then error("Invalid argument 3 of gui.button.add, expected number, got ".. type(x) .. ", wanted x value",2) end
+	  	if type(y) ~= "number" then error("Invalid argument 4 of gui.button.add, expected number, got ".. type(y) .. ", wanted y value",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 5 of gui.button.add, expected number, got ".. type(w) .. ", wanted button horizantal spacing",2) end
+	  	if type(h) ~= "number" then error("Invalid argument 6 of gui.button.add, expected number, got ".. type(h) .. ", wanted button height",2) end
+	  	if type(tcolor) ~= "number" then error("Invalid argument 7 of gui.button.add, expected number, got ".. type(y) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" then error("Invalid argument 8 of gui.button.add, expected number, got ".. type(y) .. ",wanted background color",2) end
+	  	gui.button.draw(text,x,y,w,h,tcolor,bcolor)
+	  	return gui.button.index(func,x,y,x + string.len(text) + (w * 2) - 1,y + h - 1,true,tcolor,bcolor,text,w)
+	  end,
+	  
+	  gray = function (key)
+		if type(key) ~= "number" then error("Invalid argument of gui.button.gray, expected number, got ".. type(key) .. ", wanted button ID to gray",2) end
+	  	if btnindx[key] == nil then error("Invalid argument of gui.button.gray, specified button ID does not exist",2) end
+	  	if btnindx[key][6] == true then
+	  		btnindx[key][6] = false
+	  		if btnindx[key][7] == true then
+	  			gui.button.draw(btnindx[key][text], btnindx[key][xmin], btnindx[key][ymin], btnindx[key][width], (btnindx[key][ymax] - btnindx[key][ymin]), colors.white, colors.gray)
+	  		end
+
+	  	else
+	  		btnindx[key][6] = true
+	  		if btnindx[key][7] == true then
+	  			gui.button.draw(btnindx[key][text], btnindx[key][xmin], btnindx[key][ymin], btnindx[key][width], (btnindx[key][ymax] - btnindx[key][ymin]), btnindx[key][textcolor],btnindx[key][backcolor])
+	  			
+	  		end
+	  	end
+	  end
+  },
+  shape = {
+	  altrect = function (x1,y1,x2,y2,color)
+	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.altrect, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
+	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
+	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.altrect, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
+	  	if type(y2) ~= "number" then error("Invalid argument 4 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
+	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.altrect, expected number, got ".. type(color) .. ", wanted color",2) end
+	  	for ydraw = y1,y2 - 1 do
+	  		for xdraw = x1,x2 - 1 do
+	  			gui.fill(xdraw,ydraw,color)
+	  		end
+	  	end
+	  end,
+	  rect = function (x,y,w,h,color)
+	  	if type(x) ~= "number" then error("Invalid argument 1 of gui.shape.rect, expected number, got ".. type(x) .. ", wanted x value",2) end
+	  	if type(y) ~= "number" then error("Invalid argument 2 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted y value",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 3 of gui.shape.rect, expected number, got ".. type(x2) .. ", wanted width value",2) end
+	  	if type(h) ~= "number" then error("Invalid argument 4 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted height value",2) end
+	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.rect, expected number, got ".. type(color) .. ", wanted color",2) end
+	  	gui.shape.altrect(x,y,x+w,y+h,color)
+	  end
+ },
+  fill = function (x,y,color)
+	if type(x) ~= "number" then error("Invalid argument 1 of gui.fill, expected number, got ".. type(x) .. ", wanted x value",2) end
+ 	if type(y) ~= "number" then error("Invalid argument 2 of gui.fill, expected number, got ".. type(y) .. ", wanted y value",2) end
+ 	if type(color) ~= "number" then error("Invalid argument 3 of gui.fill, expected number, got ".. type(color) .. ", wanted color",2) end
+	term.setCursorPos(x,y)
+	term.setBackgroundColor(color)
+	term.write(" ")
+  end
+}
+--Methods Here
+
+--End Methods
+thisway = function ()
+--Code Here
+
+--End Code
+end
+start = function ()
+	dof = true
+	while dof == true do
+		local event, button, xpos, ypos = os.pullEvent("mouse_click")
+		for i = 1, #btnindx do
+			if xpos >= btnindx[i][2] and xpos <= btnindx[i][4] and ypos >= btnindx[i][3] and ypos <= btnindx[i][5] and btnindx[i][6] == true then
+				btnindx[i][1]()
+			end
+		end
+	end
+end
+stop = function ()
+	dof = false
+end
+parallel.waitForAll(thisway,start)
