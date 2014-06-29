@@ -159,12 +159,7 @@ gui = {
 --End Methods
 thisway = function ()
 --Code Here
-k = gui.progbar.add(10,2,20,0,colors.green,colors.lightGray)
-os.pullEvent()
-for i = 1, 30 do
-	gui.progbar.increment(k,"5")
-	sleep(.5)
-end
+
 --End Code
 end
 start = function ()
