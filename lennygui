@@ -2,7 +2,7 @@
 --  LennyGUI by Leonard Henry Phelan IV v. 1.1  --
 --------------------------------------------------
 --Make this true if you aren't using os.loadAPI:--
-Is_running_in_portable_mode = false
+local Is_running_in_portable_mode = false
 --------------------------------------------------
 
 
