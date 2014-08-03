@@ -1,6 +1,10 @@
 --------------------------------------------------
 --  LennyGUI by Leonard Henry Phelan IV v. 1.1  --
 --------------------------------------------------
+--Make this true if you aren't using os.loadAPI:--
+Is_running_in_portable_mode = false
+--------------------------------------------------
+
 
 dofunction = 1
 xmin = 2
@@ -16,30 +20,30 @@ btnindx = { }
 prgindx = { }
 gui = {
   button = {
-	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,w)
-	  	if type(func) ~= "function" then error("Invalid argument 1 of gui.button.index, expected function, got ".. type(func) .. ", wanted function to run (19)",2) end
-	  	if type(x1) ~= "number" then error("Invalid argument 2 of gui.button.index, expected number, got ".. type(x1) .. ", wanted x1 value (20)",2) end
-	  	if type(y1) ~= "number" then error("Invalid argument 3 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y1 value (21)",2) end
-	  	if type(x2) ~= "number" then error("Invalid argument 4 of gui.button.index, expected number, got ".. type(x2) .. ", wanted x2 value (22)",2) end
-	  	if type(y2) ~= "number" then error("Invalid argument 5 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y2 value (23)",2) end
-	  	if type(color) ~= "boolean" then error("Invalid argument 6 of gui.button.index, expected number, got ".. type(color) .. ", wanted weather or not to draw button (24)",2) end
-	  	if type(tcolor) ~= "number" and type(tcolor) ~=  "nil" then error("Invalid argument 7 of gui.button.index, expected number, got ".. type(tcolor) .. ",wanted text color (25)",2) end
-	  	if type(bcolor) ~= "number" and type(bcolor) ~= "nil" then error("Invalid argument 8 of gui.button.index, expected number, got ".. type(bcolor) .. ",wanted background color (26)",2) end
-	  	if type(text) ~= "string" and type(text) ~= "nil" then error("Invalid argument 9 of gui.button.index, expected string, got ".. type(text) .. ", wanted button caption (27)",2) end
-	  	if type(w) ~= "number" and type(w) ~= "nil" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width (28)",2) end
+	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,30
+	  	if type(func) ~= "function" then error("Invalid argument 1 of gui.button.index, expected function, got ".. type(func) .. ", wanted function to run",2) end
+	  	if type(x1) ~= "number" then error("Invalid argument 2 of gui.button.index, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
+	  	if type(y1) ~= "number" then error("Invalid argument 3 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
+	  	if type(x2) ~= "number" then error("Invalid argument 4 of gui.button.index, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
+	  	if type(y2) ~= "number" then error("Invalid argument 5 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
+	  	if type(color) ~= "boolean" then error("Invalid argument 6 of gui.button.index, expected number, got ".. type(color) .. ", wanted weather or not to draw button",2) end
+	  	if type(tcolor) ~= "number" and type(tcolor) ~=  "nil" then error("Invalid argument 7 of gui.button.index, expected number, got ".. type(tcolor) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" and type(bcolor) ~= "nil" then error("Invalid argument 8 of gui.button.index, expected number, got ".. type(bcolor) .. ",wanted background color",2) end
+	  	if type(text) ~= "string" and type(text) ~= "nil" then error("Invalid argument 9 of gui.button.index, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	if type(w) ~= "number" and type(w) ~= "nil" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width",2) end
 	  	
 	  	if tcolor == nil or bcolor == nil or text == nil then tcolor = " "; bcolor = " "; text = " " end
 	 	table.insert(btnindx,{func,x1,y1,x2,y2,true,color,tcolor,bcolor,text,w})
 	  	return #btnindx
 	  end,
 	  draw = function (text, x,y,w,h, tcolor, bcolor)
-	    if type(text) ~= "string" then error("Invalid argument 1 of gui.button.draw, expected string, got ".. type(text) .. ", wanted button caption (35)",2) end
-	  	if type(x) ~= "number" then error("Invalid argument 2 of gui.button.draw, expected number, got ".. type(x) .. ", wanted x value (36)",2) end
-	  	if type(y) ~= "number" then error("Invalid argument 3 of gui.button.draw, expected number, got ".. type(y) .. ", wanted y value (37)",2) end
-	  	if type(w) ~= "number" then error("Invalid argument 4 of gui.button.draw, expected number, got ".. type(w) .. ", wanted button horizantal spacing (38)",2) end
-	  	if type(h) ~= "number" then error("Invalid argument 5 of gui.button.draw, expected number, got ".. type(h) .. ", wanted button height (39)",2) end
-	  	if type(tcolor) ~= "number" then error("Invalid argument 6 of gui.button.draw, expected number, got ".. type(y) .. ",wanted text color (40)",2) end
-	  	if type(bcolor) ~= "number" then error("Invalid argument 7 of gui.button.draw, expected number, got ".. type(y) .. ",wanted background color (41)",2) end
+	    if type(text) ~= "string" then error("Invalid argument 1 of gui.button.draw, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	if type(x) ~= "number" then error("Invalid argument 2 of gui.button.draw, expected number, got ".. type(x) .. ", wanted x value",2) end
+	  	if type(y) ~= "number" then error("Invalid argument 3 of gui.button.draw, expected number, got ".. type(y) .. ", wanted y value",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 4 of gui.button.draw, expected number, got ".. type(w) .. ", wanted button horizantal spacing",2) end
+	  	if type(h) ~= "number" then error("Invalid argument 5 of gui.button.draw, expected number, got ".. type(h) .. ", wanted button height",2) end
+	  	if type(tcolor) ~= "number" then error("Invalid argument 6 of gui.button.draw, expected number, got ".. type(y) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" then error("Invalid argument 7 of gui.button.draw, expected number, got ".. type(y) .. ",wanted background color",2) end
 	  	l = string.len(text)
 	  	gui.shape.rect(x,y,(w * 2) + l,h,bcolor)
 	  	term.setCursorPos(w+x,(h/2)+y)
@@ -47,20 +51,20 @@ gui = {
 	  	term.write(text)
 	  end,
 	  add = function (text, func, x,y,w,h, tcolor, bcolor)
-	  	if type(text) ~= "string" then error("Invalid argument 1 of gui.button.add, expected string, got ".. type(text) .. ", wanted button caption (50)",2) end
-	  	if type(func) ~= "function" then error("Invalid argument 2 of gui.button.add, expected function, got ".. type(func) .. ", wanted function to run (51)",2) end
-	  	if type(x) ~= "number" then error("Invalid argument 3 of gui.button.add, expected number, got ".. type(x) .. ", wanted x value (52)",2) end
-	  	if type(y) ~= "number" then error("Invalid argument 4 of gui.button.add, expected number, got ".. type(y) .. ", wanted y value (53)",2) end
-	  	if type(w) ~= "number" then error("Invalid argument 5 of gui.button.add, expected number, got ".. type(w) .. ", wanted button horizantal spacing (54)",2) end
-	  	if type(h) ~= "number" then error("Invalid argument 6 of gui.button.add, expected number, got ".. type(h) .. ", wanted button height (55)",2) end
-	  	if type(tcolor) ~= "number" then error("Invalid argument 7 of gui.button.add, expected number, got ".. type(y) .. ",wanted text color (56)",2) end
-	  	if type(bcolor) ~= "number" then error("Invalid argument 8 of gui.button.add, expected number, got ".. type(y) .. ",wanted background color (57)",2) end
+	  	if type(text) ~= "string" then error("Invalid argument 1 of gui.button.add, expected string, got ".. type(text) .. ", wanted button caption",2) end
+	  	if type(func) ~= "function" then error("Invalid argument 2 of gui.button.add, expected function, got ".. type(func) .. ", wanted function to run",2) end
+	  	if type(x) ~= "number" then error("Invalid argument 3 of gui.button.add, expected number, got ".. type(x) .. ", wanted x value",2) end
+	  	if type(y) ~= "number" then error("Invalid argument 4 of gui.button.add, expected number, got ".. type(y) .. ", wanted y value",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 5 of gui.button.add, expected number, got ".. type(w) .. ", wanted button horizantal spacing",2) end
+	  	if type(h) ~= "number" then error("Invalid argument 6 of gui.button.add, expected number, got ".. type(h) .. ", wanted button height",2) end
+	  	if type(tcolor) ~= "number" then error("Invalid argument 7 of gui.button.add, expected number, got ".. type(y) .. ",wanted text color",2) end
+	  	if type(bcolor) ~= "number" then error("Invalid argument 8 of gui.button.add, expected number, got ".. type(y) .. ",wanted background color",2) end
 	  	gui.button.draw(text,x,y,w,h,tcolor,bcolor)
 	  	return gui.button.index(func,x,y,x + string.len(text) + (w * 2) - 1,y + h - 1,true,tcolor,bcolor,text,w)
 	  end,
 	  gray = function (key)
-		if type(key) ~= "number" then error("Invalid argument of gui.button.gray, expected number, got ".. type(key) .. ", wanted button ID to gray (63)",2) end
-	  	if btnindx[key] == nil then error("Invalid argument of gui.button.gray, specified button ID does not exist (64)",2) end
+		if type(key) ~= "number" then error("Invalid argument of gui.button.gray, expected number, got ".. type(key) .. ", wanted button ID to gray",2) end
+	  	if btnindx[key] == nil then error("Invalid argument of gui.button.gray, specified button ID does not exist",2) end
 	  	if btnindx[key][6] == true then
 	  		btnindx[key][6] = false
 	  		if btnindx[key][7] == true then
@@ -78,11 +82,11 @@ gui = {
   },
   shape = {
 	  altrect = function (x1,y1,x2,y2,color)
-	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.altrect, expected number, got ".. type(x1) .. ", wanted x1 value (82)",2) end
-	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y1 value (83)",2) end
-	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.altrect, expected number, got ".. type(x2) .. ", wanted x2 value (84)",2) end
-	  	if type(y2) ~= "number" then error("Invalid argument 4 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y2 value (85)",2) end
-	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.altrect, expected number, got ".. type(color) .. ", wanted color (86)",2) end
+	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.altrect, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
+	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
+	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.altrect, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
+	  	if type(y2) ~= "number" then error("Invalid argument 4 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
+	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.altrect, expected number, got ".. type(color) .. ", wanted color",2) end
 	  	for ydraw = y1,y2 - 1 do
 	  		for xdraw = x1,x2 - 1 do
 	  			gui.fill(xdraw,ydraw,color)
@@ -90,19 +94,19 @@ gui = {
 	  	end
 	  end,
 	  rect = function (x,y,w,h,color)
-	  	if type(x) ~= "number" then error("Invalid argument 1 of gui.shape.rect, expected number, got ".. type(x) .. ", wanted x value (94)",2) end
-	  	if type(y) ~= "number" then error("Invalid argument 2 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted y value (95)",2) end
-	  	if type(w) ~= "number" then error("Invalid argument 3 of gui.shape.rect, expected number, got ".. type(x2) .. ", wanted width value (96)",2) end
-	  	if type(h) ~= "number" then error("Invalid argument 4 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted height value (97)",2) end
-	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.rect, expected number, got ".. type(color) .. ", wanted color (98)",2) end
+	  	if type(x) ~= "number" then error("Invalid argument 1 of gui.shape.rect, expected number, got ".. type(x) .. ", wanted x value",2) end
+	  	if type(y) ~= "number" then error("Invalid argument 2 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted y value",2) end
+	  	if type(w) ~= "number" then error("Invalid argument 3 of gui.shape.rect, expected number, got ".. type(x2) .. ", wanted width value",2) end
+	  	if type(h) ~= "number" then error("Invalid argument 4 of gui.shape.rect, expected number, got ".. type(y2) .. ", wanted height value",2) end
+	  	if type(color) ~= "number" then error("Invalid argument 5 of gui.shape.rect, expected number, got ".. type(color) .. ", wanted color",2) end
 	  	gui.shape.altrect(x,y,x+w,y+h,color)
 	  end,
 	  line = function (x1,y1,x2,y2,color)
-	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.line, expected number, got ".. type(x1) .. ", wanted x1 value (102)",2) end
-	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.line, expected number, got ".. type(y1) .. ", wanted y1 value (103)",2) end
-	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(x2) .. ", wanted x2 value (104)",2) end
-	  	if type(y2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(y2) .. ", wanted y2 value (105)",2) end
-	  	if type(color) ~= "number" then error("Invalid argument 4 of gui.shape.line, expected number, got ".. type(color) .. ", wanted color value (106)",2) end
+	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.line, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
+	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.line, expected number, got ".. type(y1) .. ", wanted y1 value",2) end
+	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
+	  	if type(y2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
+	  	if type(color) ~= "number" then error("Invalid argument 4 of gui.shape.line, expected number, got ".. type(color) .. ", wanted color value",2) end
 	  	local m = (y2 - y1) / (x2 / x1)
 		for lx = x1, x2 do
  			local ly = (m * lx) + y1
@@ -112,12 +116,12 @@ gui = {
  },
  progbar = {
  	add = function (x, y, width, percent, forecolor, backcolor)
- 		if type(x) ~= "number" then error("Invalid argument 1 of gui.progbar.add, expected number, got ".. type(x) .. ", wanted x value (116)",2) end
- 		if type(y) ~= "number" then error("Invalid argument 2 of gui.progbar.add, expected number, got ".. type(y) .. ", wanted y value (117)",2) end
- 		if type(width) ~= "number" then error("Invalid argument 3 of gui.progbar.add, expected number, got ".. type(width) .. ", wanted width value (118)",2) end
- 		if type(percent) ~= "number" then error("Invalid argument 4 of gui.progbar.add, expected number, got ".. type(percent) .. ", wanted percent value (119)",2) end
- 		if type(forecolor) ~= "number" then error("Invalid argument 5 of gui.progbar.add, expected number, got ".. type(forecolor) .. ", wanted forecolor value (120)",2) end
- 		if type(backcolor) ~= "number" then error("Invalid argument 6 of gui.progbar.add, expected number, got ".. type(backcolor) .. ", wanted x backcolor (121)",2) end
+ 		if type(x) ~= "number" then error("Invalid argument 1 of gui.progbar.add, expected number, got ".. type(x) .. ", wanted x value",2) end
+ 		if type(y) ~= "number" then error("Invalid argument 2 of gui.progbar.add, expected number, got ".. type(y) .. ", wanted y value",2) end
+ 		if type(width) ~= "number" then error("Invalid argument 3 of gui.progbar.add, expected number, got ".. type(width) .. ", wanted width value",2) end
+ 		if type(percent) ~= "number" then error("Invalid argument 4 of gui.progbar.add, expected number, got ".. type(percent) .. ", wanted percent value",2) end
+ 		if type(forecolor) ~= "number" then error("Invalid argument 5 of gui.progbar.add, expected number, got ".. type(forecolor) .. ", wanted forecolor value)",2) end
+ 		if type(backcolor) ~= "number" then error("Invalid argument 6 of gui.progbar.add, expected number, got ".. type(backcolor) .. ", wanted x backcolor",2) end
   		gui.shape.rect(x,y,width,1,backcolor)
  		if percent > 100 then percent = 100 end
  		gui.shape.rect(x,y,(percent / 100) * width,1,forecolor)
@@ -125,8 +129,8 @@ gui = {
  		return #prgindx
  	end,
  	increment = function (key, percent)
- 		if type(key) ~= "number" then error("Invalid argument 1 of gui.progbar.increment, expected number, got ".. type(key) .. ", wanted progress bar ID value (129)",2) end
- 		if type(percent) ~= "number" then error("Invalid argument 2 of gui.progbar.increment, expected number, got ".. type(percent) .. ", wanted percent incriment value (130)",2) end
+ 		if type(key) ~= "number" then error("Invalid argument 1 of gui.progbar.increment, expected number, got ".. type(key) .. ", wanted progress bar ID value",2) end
+ 		if type(percent) ~= "number" then error("Invalid argument 2 of gui.progbar.increment, expected number, got ".. type(percent) .. ", wanted percent incriment value",2) end
   		prgindx[key][4] = prgindx[key][4] + percent
  		if prgindx[key][4] > 100 then prgindx[key][4] = 100 end
  		gui.shape.rect(prgindx[key][1],prgindx[key][2],prgindx[key][3],1,prgindx[key][6])
@@ -134,8 +138,8 @@ gui = {
  		return prgindx[key][4]
  	end,
  	set = function (key, percent)
- 		if type(key) ~= "number" then error("Invalid argument 1 of gui.progbar.set, expected number, got ".. type(key) .. ", wanted progress bar ID value (137)",2) end
- 		if type(percent) ~= "number" then error("Invalid argument 2 of gui.progbar.set, expected number, got ".. type(percent) .. ", wanted percent incriment value (138)",2) end
+ 		if type(key) ~= "number" then error("Invalid argument 1 of gui.progbar.set, expected number, got ".. type(key) .. ", wanted progress bar ID value",2) end
+ 		if type(percent) ~= "number" then error("Invalid argument 2 of gui.progbar.set, expected number, got ".. type(percent) .. ", wanted percent incriment value",2) end
  		prgindx[key][4] = percent
  		if prgindx[key][4] > 100 then prgindx[key][4] = 100 end
  		gui.shape.rect(prgindx[key][1],prgindx[key][2],prgindx[key][3],1,prgindx[key][6])
@@ -143,11 +147,11 @@ gui = {
  	end
  },
  fill = function (x,y,color, char)
-	if type(x) ~= "number" then error("Invalid argument 1 of gui.fill, expected number, got ".. type(x) .. ", wanted x value (136)",2) end
- 	if type(y) ~= "number" then error("Invalid argument 2 of gui.fill, expected number, got ".. type(y) .. ", wanted y value (137)",2) end
- 	if type(color) ~= "number" then error("Invalid argument 3 of gui.fill, expected number, got ".. type(color) .. ", wanted color (138)",2) end
- 	if type(char) ~= "string" and type(char) ~= "nil" then error("Invalid argument 4 of gui.fill, expected string, got ".. type(char) .. ", wanted single character (string) (139)",2) end
- 	if type(char) ~= "nil" then if string.len(char) ~= 1 then error("Invalid argument 4 of gui.fill, expected 1 charecter, got".. string.len(char) .. " charectars, wanted charecter or nil (140)",2) end end
+	if type(x) ~= "number" then error("Invalid argument 1 of gui.fill, expected number, got ".. type(x) .. ", wanted x value",2) end
+ 	if type(y) ~= "number" then error("Invalid argument 2 of gui.fill, expected number, got ".. type(y) .. ", wanted y value",2) end
+ 	if type(color) ~= "number" then error("Invalid argument 3 of gui.fill, expected number, got ".. type(color) .. ", wanted color",2) end
+ 	if type(char) ~= "string" and type(char) ~= "nil" then error("Invalid argument 4 of gui.fill, expected string, got ".. type(char) .. ", wanted single character (string)",2) end
+ 	if type(char) ~= "nil" then if string.len(char) ~= 1 then error("Invalid argument 4 of gui.fill, expected 1 charecter, got".. string.len(char) .. " charectars, wanted charecter or nil",2) end end
 	term.setCursorPos(x,y)
 	term.setBackgroundColor(color)
 	if type(char) == "nil" then term.write(" ") else term.write(char) end
@@ -175,4 +179,5 @@ end
 stop = function ()
 	dof = false
 end
---parallel.waitForAll(thisway,start)
+
+if Is_running_in_portable_mode == true then parallel.waitForAll(thisway,start) end
