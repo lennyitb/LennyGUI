@@ -1,5 +1,5 @@
 --------------------------------------------------
---LennyGUI by Leonard Henry Phelan IV v. 1.1    --
+--  LennyGUI by Leonard Henry Phelan IV v. 1.1  --
 --------------------------------------------------
 
 dofunction = 1
@@ -26,8 +26,8 @@ gui = {
 	  	if type(tcolor) ~= "number" and type(tcolor) ~=  "nil" then error("Invalid argument 7 of gui.button.index, expected number, got ".. type(tcolor) .. ",wanted text color (25)",2) end
 	  	if type(bcolor) ~= "number" and type(bcolor) ~= "nil" then error("Invalid argument 8 of gui.button.index, expected number, got ".. type(bcolor) .. ",wanted background color (26)",2) end
 	  	if type(text) ~= "string" and type(text) ~= "nil" then error("Invalid argument 9 of gui.button.index, expected string, got ".. type(text) .. ", wanted button caption (27)",2) end
-	  	if type(w) ~= "number" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width (28)",2) end
-	  	--w = x2 - x1
+	  	if type(w) ~= "number" and type(w) ~= "nil" then error("Invalid argument 10 of gui.button.index, expected number, got ".. type(w) .. ", wanted button width (28)",2) end
+	  	
 	  	if tcolor == nil or bcolor == nil or text == nil then tcolor = " "; bcolor = " "; text = " " end
 	 	table.insert(btnindx,{func,x1,y1,x2,y2,true,color,tcolor,bcolor,text,w})
 	  	return #btnindx
@@ -58,7 +58,6 @@ gui = {
 	  	gui.button.draw(text,x,y,w,h,tcolor,bcolor)
 	  	return gui.button.index(func,x,y,x + string.len(text) + (w * 2) - 1,y + h - 1,true,tcolor,bcolor,text,w)
 	  end,
-	  
 	  gray = function (key)
 		if type(key) ~= "number" then error("Invalid argument of gui.button.gray, expected number, got ".. type(key) .. ", wanted button ID to gray (63)",2) end
 	  	if btnindx[key] == nil then error("Invalid argument of gui.button.gray, specified button ID does not exist (64)",2) end
@@ -176,4 +175,4 @@ end
 stop = function ()
 	dof = false
 end
-parallel.waitForAll(thisway,start)
+--parallel.waitForAll(thisway,start)
