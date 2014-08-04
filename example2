@@ -1,0 +1,6 @@
+os.loadAPI("lennygui")
+function hello()
+  print("Hello")
+end
+lennygui.gui.button.add("Hello",hello,2,2,2,3,colors.white,colors.blue)
+lennygui.start()

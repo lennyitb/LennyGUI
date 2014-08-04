@@ -2,7 +2,7 @@
 --  LennyGUI by Leonard Henry Phelan IV v. 1.1  --
 --------------------------------------------------
 --Make this true if you aren't using os.loadAPI:--
-local Is_running_in_portable_mode = false
+Is_running_in_portable_mode = false
 --------------------------------------------------
 
 
@@ -20,7 +20,7 @@ btnindx = { }
 prgindx = { }
 gui = {
   button = {
-	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,30
+	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,w)
 	  	if type(func) ~= "function" then error("Invalid argument 1 of gui.button.index, expected function, got ".. type(func) .. ", wanted function to run",2) end
 	  	if type(x1) ~= "number" then error("Invalid argument 2 of gui.button.index, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
 	  	if type(y1) ~= "number" then error("Invalid argument 3 of gui.button.index, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
@@ -107,10 +107,21 @@ gui = {
 	  	if type(x2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(x2) .. ", wanted x2 value",2) end
 	  	if type(y2) ~= "number" then error("Invalid argument 3 of gui.shape.line, expected number, got ".. type(y2) .. ", wanted y2 value",2) end
 	  	if type(color) ~= "number" then error("Invalid argument 4 of gui.shape.line, expected number, got ".. type(color) .. ", wanted color value",2) end
-	  	local m = (y2 - y1) / (x2 / x1)
-		for lx = x1, x2 do
- 			local ly = (m * lx) + y1
- 			gui.fill(lx, ly, color)
+	  	--local m = (y2 - y1) / (x2 / x1)
+		--for lx = x1, x2 do
+ 		--	local ly = (m * lx) + y1
+ 		--	gui.fill(lx, ly, color)
+		--end
+		rise = y2 - y1
+		run = x2 - x1
+		m = rise / run
+		if x1 == x2 or y1 == y2 then
+			gui.shapes.altrect(x1, x2, y1, y2, color)
+		else
+			for i = x1, x2 do
+				y = (m * i) + y1
+				gui.fill(i, y, color)
+			end
 		end
 	  end
  },

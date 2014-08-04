@@ -10,6 +10,7 @@ API to make pretty GUIs in Computercraft for Minecraft
 3. Shapes (rectangles & lines)
 4. Ablilty to create clickable reagons of the screen that aren't drawn as buttons and similarly to create boxes with text that look like buttons, but don't trigger anything
 5. Customizable text color & background color
+6. Cool example programs
 
 ###Functions:
 
