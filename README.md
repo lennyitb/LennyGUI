@@ -32,3 +32,6 @@ API to make pretty GUIs in Computercraft for Minecraft
 2. ```stop()``` - Stops the click checking method *Hint: because ```start()``` is an infinite loop, to use ```stop()```, the routine that does it must be run using the parallel API, this is covered in detail in the 2.0 release notes*
 
 	More to come...
+
+![](https://raw.githubusercontent.com/lennyitb/LennyGUI/master/images/pic1.png)
+![](https://raw.githubusercontent.com/lennyitb/LennyGUI/master/images/pic2.png)
