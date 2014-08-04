@@ -28,6 +28,6 @@ API to make pretty GUIs in Computercraft for Minecraft
 ####Control Methods
 
 1. ```start()``` - Simple enough, engages in an infinite loop which checks if a button is clicked and runs the apropriate user-defined function
-2. ```stop()``` - Stops the click checking method *Hint: because ```start()``` is an infinite loop, to use ```stop()```, the routine that does it must be run using the parallel API*
+2. ```stop()``` - Stops the click checking method *Hint: because ```start()``` is an infinite loop, to use ```stop()```, the routine that does it must be run using the parallel API, this is covered in detail in the 2.0 release notes*
 
 	More to come...
