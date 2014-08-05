@@ -1,5 +1,5 @@
 --------------------------------------------------
---  LennyGUI by Leonard Henry Phelan IV v. 1.1  --
+--  LennyGUI by Leonard Henry Phelan IV v. 2.0  --
 --------------------------------------------------
 --Make this true if you aren't using os.loadAPI:--
 Is_running_in_portable_mode = false
@@ -18,8 +18,10 @@ text = 10
 width = 11
 btnindx = { }
 prgindx = { }
-gui = {
-  button = {
+gui =
+{
+  button =
+  {
 	  index = function (func,x1,y1,x2,y2,color,tcolor,bcolor,text,w)
 	  	if type(func) ~= "function" then error("Invalid argument 1 of gui.button.index, expected function, got ".. type(func) .. ", wanted function to run",2) end
 	  	if type(x1) ~= "number" then error("Invalid argument 2 of gui.button.index, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
@@ -80,7 +82,8 @@ gui = {
 	  	end
 	  end
   },
-  shape = {
+  shape =
+  {
 	  altrect = function (x1,y1,x2,y2,color)
 	  	if type(x1) ~= "number" then error("Invalid argument 1 of gui.shape.altrect, expected number, got ".. type(x1) .. ", wanted x1 value",2) end
 	  	if type(y1) ~= "number" then error("Invalid argument 2 of gui.shape.altrect, expected number, got ".. type(y2) .. ", wanted y1 value",2) end
@@ -123,9 +126,10 @@ gui = {
 				gui.fill(i, y, color)
 			end
 		end
-	  end
+	end
  },
- progbar = {
+ progbar =
+ {
  	add = function (x, y, width, percent, forecolor, backcolor)
  		if type(x) ~= "number" then error("Invalid argument 1 of gui.progbar.add, expected number, got ".. type(x) .. ", wanted x value",2) end
  		if type(y) ~= "number" then error("Invalid argument 2 of gui.progbar.add, expected number, got ".. type(y) .. ", wanted y value",2) end
@@ -168,13 +172,41 @@ gui = {
 	if type(char) == "nil" then term.write(" ") else term.write(char) end
   end
 }
---Methods Here
 
---End Methods
+---------------------------------------------------
+--       ||                             ||       --
+--      _||_  Place your methods here  _||_      --
+--      \  /                           \  /      --  
+--       \/                             \/       --
+---------------------------------------------------
+
+
+
+---------------------------------------------------
+--       /\                             /\       --
+--      /  \                           /  \      --
+--      ~||~  Place your methods here  ~||~      --
+--       ||                             ||       --
+---------------------------------------------------
+
 thisway = function ()
---Code Here
 
---End Code
+---------------------------------------------------
+--         ||                        ||          --
+--        _||_ Place your code here _||_         --
+--        \  /                      \  /         --
+--         \/                        \/          --
+---------------------------------------------------
+
+--HOLYSHITNOTHEREIMACOMMENT!!!!!!!!!!!!!!!!!!!!!!--
+
+---------------------------------------------------
+--         /\                        /\          --
+--        /  \                      /  \         --
+--        ~||~ Place your code here ~||~         --
+--         ||                        ||          --
+---------------------------------------------------
+
 end
 start = function ()
 	dof = true
