@@ -22,7 +22,7 @@ API to make pretty GUIs in Computercraft for Minecraft
 6. ```gui.shape.altrect(x1, y1, x2, y2, color)``` - Also draws a rectangle, but using coord1 and coord2 rather than coord and width.
 7. ```gui.shape.line(x1,y1,x2,y2,color)``` - Basic line algoritm
 8. ```gui.fill(x, y, color [, char])``` - Fills a single pixel with the specified color or charecter using the preset textcolor.
-9. ```gui.progbar.add(x, y, width, percent, forecolor, backcolor)``` - Craetes a progress bar already at the specified percent (or 0), returns ID  for use with next 2 functions
+9. ```gui.progbar.add(x, y, width, percent, forecolor, backcolor)``` - Creates a progress bar already at the specified percent (or 0), returns ID  for use with next 2 functions
 10. ```gui.progbar.increment(ID, percent)``` - Increments the percent of the progress bar with ID given by percent, returns total percent.
 11. ```gui.progbar.set(ID, percent)``` - Sets percent of progress bar with ID given to percent.
 
