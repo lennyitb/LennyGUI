@@ -3,7 +3,7 @@ LennyGUI
 
 API to make pretty GUIs in Computercraft for Minecraft
 
-###Features:
+### Features:
 
 1. Full error handling, clearly tells you what you did wrong
 2. Buttons
@@ -12,7 +12,7 @@ API to make pretty GUIs in Computercraft for Minecraft
 5. Customizable text color & background color
 6. Cool example programs
 
-###Functions:
+### Functions:
 
 1. ```gui.button.add(text, function, x, y, spacing, height, textcolor, backgroundcolor)``` - Draws a button on the screen, returns ID which can be used for certain operations
 2. ```gui.button.draw(text, x, y, spacing, height, textcolor, backgroundcolor)``` - One of the two functions that gui.button.add uses, draws what appears to be a button, but dosen't do or return anything
@@ -26,7 +26,7 @@ API to make pretty GUIs in Computercraft for Minecraft
 10. ```gui.progbar.increment(ID, percent)``` - Increments the percent of the progress bar with ID given by percent, returns total percent.
 11. ```gui.progbar.set(ID, percent)``` - Sets percent of progress bar with ID given to percent.
 
-####Control Methods
+#### Control Methods
 
 1. ```start()``` - Simple enough, engages in an infinite loop which checks if a button is clicked and runs the apropriate user-defined function
 2. ```stop()``` - Stops the click checking method *Hint: because ```start()``` is an infinite loop, to use ```stop()```, the routine that does it must be run using the parallel API, this is covered in detail in the 2.0 release notes*
